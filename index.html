@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="format-detection" content="telephone=no" />	
+	<meta name="viewport" content="user-scalable=no, width=device-width, height=device-height" />
+
+	<link rel="stylesheet" type="text/css" href="css/football.css" />
+        
+        <link rel="stylesheet" href="css/building-blocks/input_areas.css" />
+        <link rel="stylesheet" href="css/building-blocks/toolbars.css" />
+        <link rel="stylesheet" href="css/building-blocks/icons/action_icons.css" />
+        <link rel="stylesheet" href="css/building-blocks/action_menu.css" />
+        <link rel="stylesheet" href="css/building-blocks/edit_mode.css" />
+<!--        <link rel="stylesheet" href="css/building-blocks/switches.css" />-->
+      
+        <link rel="stylesheet" href="css/building-blocks-custom.css" />
+        
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/constants.js"></script>
+	<script type="text/javascript" src="js/eventmanager.class.js"></script>
+	<script type="text/javascript" src="js/playervars.js"></script>
+	<script type="text/javascript" src="js/player.class.js"></script>
+	<script type="text/javascript" src="js/field.class.js"></script>	
+	<script type="text/javascript" src="js/formation.class.js"></script>
+	<script type="text/javascript" src="js/formations.class.js"></script>
+	<script type="text/javascript" src="js/optionsmenu.class.js"></script>
+	<script type="text/javascript" src="js/football.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var football = new Football("wrapper", "mainCanvas", "animCanvas", "fieldCanvas", "nameCanvas"); 
+		football.init();	
+	});
+	</script>
+
+    <title>Formator</title>
+    
+    <style>
+    
+        
+        
+
+
+           
+        
+    </style>
+
+</head>
+
+<body>
+                
+        <!-- wrapper for the football view -->
+        <div id="wrapper">
+
+            <div id="canvasContainer">
+                <canvas id="fieldCanvas" class="bigCanvas"></canvas>
+                <canvas id="nameCanvas" class="bigCanvas"></canvas>
+                <canvas id="animCanvas" class="bigCanvas"></canvas>
+                <canvas id="mainCanvas" class="bigCanvas"></canvas>                      
+            </div><!-- /canvasContainer -->
+
+
+            <div role="toolbar" id="toolbar-main" class="hidden"><!-- toogle-->
+                <ul>
+<!--                    <li><button id="icon-settings" class="action-icon"></button></li>-->
+                    <li><button id="icon-formation" class="action-icon"></button></li>
+                    <li><button id="icon-colors" class="action-icon"></button></li>
+
+                </ul>
+                <a href="#toolbar-toggle" class="toolbar-toggle"></a>
+              </div><!-- /toolbar -->
+
+        </div><!-- /wrapper -->
+                                          
+      
+    <!-- jersey colors -->  
+    <section class="action-menu hidden" data-position="back" id="action-menu-colors">
+        <form data-type="action" role="dialog">
+          <header>Pick your team colors</header> <!-- this header is optional -->
+          <menu>
+              <canvas id="player-color-preview" width="64" height="64"></canvas>
+              <ul class="menu-item" data-player-part="jersey">
+                    <li><a href="#ff0000" style="background: #ff0000"></a></li>
+                    <li><a href="#ffed00" style="background: #ffed00"></a></li>
+                    <li><a href="#000000" style="background: #000000"></a></li>
+                    <li><a href="#3aaa35" style="background: #3aaa35"></a></li>
+                    <li><a href="#0000ff" style="background: #0000ff"></a></li>
+                    <li><a href="#83d0f5" style="background: #83d0f5"></a></li>
+                    <li><a href="#cccccc" style="background: #cccccc"></a></li>
+              </ul>
+              <ul class="menu-item" data-player-part="trousers">
+                    <li><a href="#ff0000" style="background: #ff0000"></a></li>
+                    <li><a href="#ffed00" style="background: #ffed00"></a></li>
+                    <li><a href="#000000" style="background: #000000"></a></li>
+                    <li><a href="#3aaa35" style="background: #3aaa35"></a></li>
+                    <li><a href="#0000ff" style="background: #0000ff"></a></li>
+                    <li><a href="#83d0f5" style="background: #83d0f5"></a></li>
+                    <li><a href="#cccccc" style="background: #cccccc"></a></li>
+              </ul>
+              <ul class="menu-item" data-player-part="socks">
+                    <li><a href="#ff0000" style="background: #ff0000"></a></li>
+                    <li><a href="#ffed00" style="background: #ffed00"></a></li>
+                    <li><a href="#000000" style="background: #000000"></a></li>
+                    <li><a href="#3aaa35" style="background: #3aaa35"></a></li>
+                    <li><a href="#0000ff" style="background: #0000ff"></a></li>
+                    <li><a href="#83d0f5" style="background: #83d0f5"></a></li>
+                    <li><a href="#cccccc" style="background: #cccccc"></a></li>
+              </ul>
+
+            <button class="close-action-menu"> Cancel </button>
+          </menu>
+        </form>
+    </section>
+    
+    <!-- formation -->  
+    <section class="action-menu hidden" data-position="back" id="action-menu-formation">
+        <form data-type="action" role="dialog">
+          <header> Pick your formation </header> <!-- this header is optional -->
+          <menu>
+            
+              <button class="formation-type">4-4-2</button>
+              <button class="formation-type">4-4-2-Diamond</button>
+              <button class="formation-type">4-3-3</button>
+              <button class="formation-type">3-4-3</button>
+              <button class="formation-type">3-5-2</button>
+              <button class="formation-type">4-2-3-1</button>
+              <button class="formation-type">WM</button>
+
+            <button class="close-action-menu"> Cancel </button>
+          </menu>
+        </form>
+    </section>
+    
+    <!-- settings -->  
+    <section class="action-menu hidden" data-position="back" id="action-menu-settings">
+        <form data-type="action" role="dialog">
+          <header> Pick your formation </header> <!-- this header is optional -->
+          <menu>
+            
+              <label class="pack-switch">
+                <input type="checkbox">
+                <span></span>
+              </label>
+
+            <button class="close-action-menu"> Cancel </button>
+          </menu>
+        </form>
+    </section>
+    
+    
+    
+    
+    <!-- player name input -->
+    <section data-position="edit-mode" id="edit-mode-player-name" class="hidden">
+        <form data-type="edit" role="dialog">
+        <section>
+          <header>      
+            <menu class="edit-mode-toolbar" type="toolbar">
+                <input type="text" id="player-name-input" placeholder="name" value="" />
+                <button id="player-name-close"><span class="icon icon-close"></span>ok</button>
+            </menu>        
+          </header>
+        </section>
+      </form>
+  </section>
+    
+        
+
+</body>
+</html>

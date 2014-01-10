@@ -1,0 +1,140 @@
+/* --- html --- */
+html {
+    font-size: 62.5%; /* important for rem values ! */
+}
+
+/* --- toolbar --- */
+#toolbar-main[role="toolbar"]  {
+    transition: all 0.25s ease;
+    bottom: -3rem;
+}
+#toolbar-main.visible[role="toolbar"] {            
+    bottom: 0rem;            
+}
+#toolbar-main.hidden[role="toolbar"] {            
+    background: none;         
+}
+#toolbar-main.hidden[role="toolbar"] > ul {
+    display: none;
+}
+#toolbar-main[role="toolbar"] .toolbar-toggle {
+    display: block;
+    background: url("building-blocks/toolbars/images/open@1.png") no-repeat scroll 0 0 / 5rem 1rem rgba(0, 0, 0, 0);
+    width: 5rem; height: 1rem;
+    float: right;
+}
+#toolbar-main.visible[role="toolbar"] .toolbar-toggle {
+    width: 3rem; 
+    height: 3rem;
+    top: 0.5rem;
+    right: 1.25rem;
+    position: relative;
+    background: url("building-blocks/icons/action_icons.png") no-repeat !important;
+    background-position: 0 -29px !important;
+    transform: rotate(270deg);
+}
+#icon-settings:before {
+    background-position: 0 -1080px;
+}
+#icon-formation:before {
+    background-position: 0 -1260px;
+}
+#icon-colors:before {
+    background-position: 0 -690px;
+}
+
+
+/* -- action_menu ---*/
+.action-menu.visible{
+    animation: 0.2s ease 0s normal forwards 1 fadeIn;
+    z-index: 120;
+}
+.action-menu.hidden {
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+/* --- edit_mode ---*/
+#edit-mode-player-name.visible[data-position="edit-mode"] {
+    left: 0;
+    height: 5rem;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 120;
+}
+#edit-mode-player-name.hidden[data-position="edit-mode"] {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: -5rem;
+    transition: all 0.3s ease 0s;
+    z-index: -1;
+}
+.edit-mode-toolbar {
+    float: left !important;
+    margin-left: 6rem !important;
+}
+.edit-mode-toolbar button {
+   float: left;
+   content: "";
+}
+.edit-mode-toolbar input {
+    height: 3rem;
+    width: 12rem;
+    float: left;
+    margin-top: 1rem;
+}
+
+/* --- color menu items --- */
+ul.menu-item {
+    -moz-box-sizing: border-box;
+    background: none repeat scroll 0 0 padding-box #5F5F5F;
+    border: medium none;
+    border-radius: 0.2rem;
+    bottom: 0;
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    font-weight: normal;
+    height: 4rem;
+    line-height: 4rem;
+    margin: 0 1.5rem 1rem;
+    outline: medium none;
+    overflow: hidden;
+    padding: 0 1rem;
+    position: relative;
+    text-align: left;
+    text-overflow: ellipsis;
+    text-shadow: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: calc(100% - 3rem);
+    list-style-type: none;
+}
+ul.menu-item > li {
+    float: left;
+    
+}
+ul.menu-item > li a {
+    width: 3rem; 
+    height: 3rem;
+    display: block;
+    background: #ccc;
+    margin: 0.5rem 0.5rem 0 0;
+}
+ul.menu-item > li a.active {
+    box-shadow: 0px 0px 4px #fff; 
+
+}
+canvas#player-color-preview {
+    width: 64px;
+    height: 64px;
+    margin-left: 20%;
+}
